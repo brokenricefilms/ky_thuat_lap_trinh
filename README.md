@@ -153,3 +153,133 @@ void main(){
   cout << "s = " << s;
 }
 ```
+
+
+## Chương 2
+
+### Bài 1
+
+Viết chương trình cho phép nhập vào một số nguyên dương n (n>1).
+
+Tính giá trị của biểu thức sau:
+1/2-1/3+1/4…+(-1)^n/n
+
+```cpp
+#include <iostream>
+using namespace std;
+
+void nhapN(int &n){
+	do{
+		cout << "Nhap n>1: ";
+		cin >> n;
+		if (n <= 1){
+			cout << "Khong hop le. Vui long nhap lai.\n";
+		}
+	} while(n <= 1);
+}
+
+float tinhBt(int n){
+	float s = 0.0;
+	float tu = 1.0;
+	for (int i = 2; i <= n; i++){
+		s += tu / i;
+		tu *= -1;
+	}
+	return s;
+}
+
+void main(){
+	int n;
+	nhapN(n);
+	cout << "s = " << tinhBt(n);
+}
+```
+
+### Bài 3
+
+Viết chương trình cho phép nhập vào một số nguyên n (0<n) và thực hiện các yêu cầu sau:
+
+–Kiểm tra n có phải là số nguyên tố hay không?
+–In ra các số nguyên tố nhỏ hơn n.
+–Tính tổng các số nguyên tố nhỏ hơn n.
+–Liệt kê n số nguyên tố đầu tiên.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int nhapN(){
+	int n;
+	do{
+		cout << "Nhap n>0: ";
+		cin >> n;
+		if (n <= 0){
+			cout << "Khong hop le. Nhap lai.\n";
+		}
+	}while(n <= 0);
+	return n;
+}
+
+// Hàm Kiểm tra n có phải là số nguyên tố hay không?
+int kiemTraSnt(int n){
+	if (n == 1){
+		return 0;
+	}
+	for (int i = 2; i < n; i++){
+		if (n % i == 0){
+			return 0;
+		}
+	}
+	return 1;
+}
+
+// Hàm In ra các số nguyên tố nhỏ hơn n
+void inCacSntNhoHonN(int n){
+	cout << "Cac so nguyen to nho hon " << n " la: ";
+	for (int i = 2; i < n; i++){
+		if (kiemTraSnt(i) == 1){
+			cout << i << '\t';
+		}
+	}
+}
+
+// Hàm Tính tổng các số nguyên tố nhỏ hơn n
+int tinhTongCacSntNhoHonN(int n){
+	int tong = 0;
+	for (int i = 2; i < n; i++){
+		if (kiemTraSnt(i) == 1){
+			tong += i;
+		}
+	}
+	return tong;
+}
+
+// Hàm Liệt kê n số nguyên tố đầu tiên
+void lietKeNSntDauTien(int n){
+	cout << n << " so nguyen to dau tien la: ";
+	int i = 2;
+	while(n > 0){
+		if (kiemTraSnt(i) == 1){
+			cout << i << '\t';
+			n--;
+		}
+		i++;
+	}
+}
+
+void main(){
+	int n = nhapN();
+
+	if (kiemTraSnt(n) == 1){
+		cout << n << " la so nguyen to.\n";
+	}else{
+		cout << n << " khong phai la so nguyen to.\n";
+	}
+
+	inCacSntNhoHonN(n);
+
+	cout << "Tong cac so nguyen to nho hon " << n << " la: " << tinhTongCacSntNhoHonN(n) << endl;
+
+	lietKeNSntDauTien(n);
+}
+```
