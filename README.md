@@ -283,3 +283,117 @@ void main(){
 	lietKeNSntDauTien(n);
 }
 ```
+
+```cpp
+#include <iostream>
+using namespace std;
+// 4. Viết chương trình tính kết quả biểu thức s = 1!/1 + 2!/2 + 3!/3 + ... + n!/n (hàm main, hàm tính s)
+
+long tinhS(int n) {
+	long tong = 0;
+	for (int i = 1; i <= n; i++) {
+		long tu = 1;
+		for (int j = 1; j <= i; j++) {
+			tu *= j;
+		}
+		tong += tu / i;
+	}
+	return tong;
+}
+
+long tinhS2(int n) {
+	long tong = 0;
+	for (int i = 1; i <= n; i++) {
+		long tu = 1;
+		for (int j = 2; j < i; j++) {
+			tu *= j;
+		}
+		tong += tu;
+	}
+	return tong;
+}
+
+void main() {
+	int n;
+	do {
+		cout << "Nhap n >= 1: ";
+		cin >> n;
+		if (n < 1) {
+			cout << "Khong hop le. Nhap lai.\n";
+		}
+	} while (n < 1);
+
+	cout << "S = " << tinhS2(n) << endl;
+
+	system("pause");
+}
+
+#include <iostream>
+using namespace std;
+// 6. Viết chương trình yêu cầu người dùng nhập liên tục các số nguyên từ bàn phím cho tới khi nhập 0 thì dừng.
+// Tìm và trả về số lớn nhất trong những số vừa nhập (2 hàm là hàm main và hàm nhập tìm max)
+int nhapTimMax() {
+	int n;
+	int max;
+	int flag = 0;
+	do {
+		cout << "Nhap mot so (nhap 0 de dung lai): ";
+		cin >> n;
+		if (flag == 0) {
+			max = n;
+			flag = 1;
+		}
+		else {
+			if (n > max) {
+				max = n;
+			}
+		}
+		if (n == 0) {
+			cout << "Ban vua nhap 0. Dung nhap.\n";
+		}
+	} while (n != 0);
+
+	return max;
+}
+void main() {
+	int max = nhapTimMax();
+	cout << "So lon nhat ban vua nhap la: " << max << endl;
+	system("pause");
+}
+
+#include <iostream>
+using namespace std;
+// 5. Viết chương trình nhập vào 1 số thập phân, in ra số đó trong hệ nhị phân (hàm main, hàm in)
+void inRaSoNhiPhan(int n) {
+	cout << n << " trong he nhi phan la: ";
+	if (n == 0) {
+		cout << "0";
+		return;
+	}
+	int a[32];
+	int i = 31;
+	while (n > 0)
+	{
+		a[i] = n % 2;
+		n /= 2;
+		i--;
+	}
+	i++;
+	for (; i < 32; i++) {
+		cout << a[i];
+	}
+	cout << endl;
+}
+void main() {
+	int n;
+	do {
+		cout << "Nhap n >= 0: ";
+		cin >> n;
+		if (n < 0) {
+			cout << "Khong hop le. Nhap lai.\n";
+		}
+	} while (n < 0);
+	inRaSoNhiPhan(n);
+	system("pause");
+}
+```
