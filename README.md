@@ -397,3 +397,169 @@ void main() {
 	system("pause");
 }
 ```
+
+```cpp
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+using namespace std;
+// 1. Đảo ngược các ký tự trong chuỗi
+void daoNguocChuoi(char* s) {
+	int len = strlen(s);
+	for (int i = 0; i < len / 2; i++) {
+		char tmp = s[i];
+		s[i] = s[len - 1 - i];
+		s[len - 1 - i] = tmp;
+	}
+}
+
+// 2. Thực hiện việc tách một chuỗi họ tên thành họ lót và tên theo tên người Việt Nam
+void tachHoLotVaTen(char* s, char* hoLot, char* ten) {
+	int len = strlen(s);
+	int i = len;
+	while (s[i] != ' ') {
+		i--;
+	}
+	for (int j = 0; j < i; j++) {
+		hoLot[j] = s[j];
+	}
+	hoLot[i] = '\0';
+	for (int j = 0; i + 1 + j <= len; j++) {
+		ten[j] = s[i + 1 + j];
+	}
+}
+
+// 3. Thực hiện việc xoá num ký tự trong chuỗi s bắt đầu từ vị trí pos
+void xoaNumKyTuTuViTriPos(char* s, int num, int pos) {
+	strcpy(s + pos, s + pos + num);
+}
+
+// 4. Thực hiện việc chèn chuỗi sub vào chuỗi s tại vị trí pos
+void chenChuoiSubVaoViTriPos(char* s, char* sub, int pos) {
+	char* tmp = new char[50];
+	strcpy(tmp, s + pos);
+	strcpy(s + pos, sub);
+	strcat(s, tmp);
+}
+
+// 5. Tìm tất cả vị trí xuất hiện của chuỗi con sub trong chuỗi mẹ s
+void timTatCaViTriCuaChuoiConSub(char* s, char* sub) {
+	cout << "Vi tri cua cac chuoi con sub: ";
+	int len = strlen(s);
+	int i = 0;
+	char* p;
+	while (i < len && (p = strstr(s + i, sub)) != NULL) {
+		int vt = len - strlen(p);
+		cout << vt << '\t';
+		i = vt + 1;
+	}
+}
+
+// 6. Thực hiện việc đảo ngược các từ có trong câu
+void daoNguocCacTu(char* s) {
+	daoNguocChuoi(s);
+	int len = strlen(s);
+	int i = 0, j = 0;
+	for (; i <= len; i++) {
+		if (s[i] == ' ' || s[i] == '\0') {
+			int wordLen = i - j;
+			for (int k = 0; k < wordLen / 2; k++) {
+				char tmp = s[j + k];
+				s[j + k] = s[i - 1 - k];
+				s[i - 1 - k] = tmp;
+			}
+			j = i + 1;
+		}
+	}
+}
+
+// 7. Thực hiện kiểm tra chuỗi s có tuần hoàn với chu kỳ n hay không (n là số nguyên dương)
+int kiemTraChuoiTuanHoanChuKyN(char* s, int n) {
+	int len = strlen(s);
+	if (len % n != 0) {
+		return 0;
+	}
+	else {
+		for (int i = n; i < len; i += n) {
+			for (int j = 0; j < n; j++) {
+				if (s[j] != s[i + j]) {
+					return 0;
+				}
+			}
+		}
+	}
+	return 1;
+}
+
+
+void main() {
+	char* s = new char[50];
+	cout << "Nhap chuoi s: ";
+	cin.getline(s, 49);
+	cout << "Chuoi vua nhap: \"" << s << "\"\n";
+
+	//daoNguocChuoi(s);
+	//cout << "Chuoi vua dao nguoc: \"" << s << "\"\n";
+
+	/*char* hoLot = new char[50];
+	char* ten = new char[50];
+	tachHoLotVaTen(s, hoLot, ten);
+	cout << "Ho lot: \"" << hoLot << "\"\n";
+	cout << "Ten: \"" << ten << "\"\n";*/
+
+	/*int num, pos;
+	int len = strlen(s);
+	do {
+		cout << "Nhap num: ";
+		cin >> num;
+		cout << "Nhap pos: ";
+		cin >> pos;
+		if (pos < 0 || pos >= len || num <= 0 || pos + num > len) {
+			cout << "num va pos khong hop le. Nhap lai.\n";
+		}
+	} while (pos < 0 || pos >= len || num <= 0 || pos + num > len);
+	xoaNumKyTuTuViTriPos(s, num, pos);
+	cout << "Chuoi sau khi xoa: \"" << s << "\"\n";*/
+
+	/*int pos;
+	char* sub = new char[50];
+	int len = strlen(s);
+	do {
+		cout << "Nhap pos: ";
+		cin >> pos;
+		cin.ignore();
+		cout << "Nhap sub: ";
+		cin.getline(sub, 49);
+		if (pos < 0 || pos > len || len + strlen(sub) > 49) {
+			cout << "pos va sub khong hop le. Nhap lai.\n";
+		}
+	} while (pos < 0 || pos > len || len + strlen(sub) > 49);
+	chenChuoiSubVaoViTriPos(s, sub, pos);
+	cout << "Chuoi sau khi chen: \"" << s << "\"\n";*/
+
+	/*char* sub = new char[50];
+	cout << "Nhap sub: ";
+	cin.getline(sub, 49);
+	timTatCaViTriCuaChuoiConSub(s, sub);*/
+
+	//daoNguocCacTu(s);
+	//cout << "Chuoi sau khi dao nguoc tu: \"" << s << "\"\n";
+
+	/*int n;
+	int len = strlen(s);
+	do {
+		cout << "Nhap n > 0, n < " << len << ": ";
+		cin >> n;
+		if (n <= 0 || n >= len) {
+			cout << "Khong hop le. Nhap lai.\n";
+		}
+	} while (n <= 0 || n >= len);
+	if (kiemTraChuoiTuanHoanChuKyN(s, n) == 1) {
+		cout << "Chuoi s tuan hoan theo chu ky " << n << endl;
+	}
+	else {
+		cout << "Chuoi s KHONG tuan hoan theo chu ky " << n << endl;
+	}*/
+
+	system("pause");
+}
+```
