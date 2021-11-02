@@ -22,7 +22,8 @@ int main() {
   cout << "\nCác số dương có trong ma trận là: ";
   xuatCacSoDuongTrongMaTran(m);
 
-  cout << "\nGiá trị nhỏ nhất trên đường chéo chính của ma trận là: " << timGiaTriNhoNhatTrenDuongCheoChinh(m) << endl;
+  cout << "\nGiá trị nhỏ nhất trên đường chéo chính của ma trận là: "
+       << timGiaTriNhoNhatTrenDuongCheoChinh(m) << endl;
 
   return 0;
 }
