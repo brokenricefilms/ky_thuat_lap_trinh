@@ -565,3 +565,135 @@ void main() {
 	system("pause");
 }
 ```
+
+## Chương 4
+
+### bài 1
+
+```cpp
+// Bài 4.1
+#include <iostream>
+using namespace std;
+#define KTM 50
+
+// Cho một dãy số nguyên
+struct DaySo {
+	int arr[KTM];
+	int n;
+};
+
+// Tìm giá trị của phần tử lớn nhất trong dãy số
+int timMax(DaySo ds) {
+	int max = ds.arr[0];
+	for (int i = 1; i < ds.n; i++) {
+		if (ds.arr[i] > max) {
+			max = ds.arr[i];
+		}
+	}
+	return max;
+}
+
+// Tìm vị trí đầu tiên của phần tử nhỏ nhất trong dãy số
+int timViTriMinDauTien(DaySo ds) {
+	int vtMin = 0;
+	for (int i = 1; i < ds.n; i++) {
+		if (ds.arr[i] < ds.arr[vtMin]) {
+			vtMin = i;
+		}
+	}
+	return vtMin;
+}
+
+// Tính tổng các phần tử là số hoàn thiện trong dãy số
+bool kiemTraSht(int n) {
+	int tong = 0;
+	for (int i = 1; i < n; i++) {
+		if (n % i == 0) {
+			tong += i;
+		}
+	}
+	return tong == n;
+}
+int tinhTongSht(DaySo ds) {
+	int tong = 0;
+	for (int i = 0; i < ds.n; i++) {
+		if (kiemTraSht(ds.arr[i]) == true) {
+			tong += ds.arr[i];
+		}
+	}
+	return tong;
+}
+
+// Tìm vị trí đầu tiên của phần tử dương trong dãy số
+int timViTriDuongDauTien(DaySo ds) {
+	for (int i = 0; i < ds.n; i++) {
+		if (ds.arr[i] > 0) {
+			return i;
+		}
+	}
+	return -1;
+}
+
+void main() {
+	DaySo ds = {
+		{7, 5, 3, 8, 4, 9, 2, 6},
+		8
+	};
+	cout << "Max = " << timMax(ds) << endl;
+	system("pause");
+}
+```
+
+### bài 2
+
+```cpp
+// Bài 4.2
+#include <iostream>
+using namespace std;
+#define KTM 50
+
+// Cho ma trận vuông có các phần tử là những số nguyên
+struct MTVuong {
+	int arr[KTM][KTM];
+	int n;
+};
+
+// Tìm giá trị lớn nhất ở dòng k trong ma trận
+int timMaxDongK(MTVuong mt, int k) {
+	int max = mt.arr[k][0];
+	for (int i = 1; i < mt.n; i++) {
+		if (mt.arr[k][i] > max) {
+			max = mt.arr[k][i];
+		}
+	}
+	return max;
+}
+
+// Tìm số các số dương có trong ma trận
+int demSoDuong(MTVuong mt) {
+	int dem = 0;
+	for (int i = 0; i < mt.n; i++) {
+		for (int j = 0; j < mt.n; j++) {
+			if (mt.arr[i][j] > 0) {
+				dem++;
+			}
+		}
+	}
+	return dem;
+}
+
+// Tìm giá trị nhỏ nhất trên đường chéo chính của ma trận
+int timMin(MTVuong mt) {
+	int min = mt.arr[0][0];
+	for (int i = 1; i < mt.n; i++) {
+		if (mt.arr[i][i] < min) {
+			min = mt.arr[i][i];
+		}
+	}
+	return min;
+}
+
+void main() {
+	system("pause");
+}
+```
