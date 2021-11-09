@@ -697,3 +697,166 @@ void main() {
 	system("pause");
 }
 ```
+
+## Chương 5
+
+```cpp
+// Bài 5.3
+#include <iostream>
+using namespace std;
+#define KTM 50
+
+// Cho một dãy số nguyên
+struct DaySo {
+	int arr[KTM];
+	int n;
+};
+
+// Tính tổng các số chẵn có trong dãy số
+int tinhTongCacSoChan(DaySo ds) {
+	int tong = 0;
+	for (int i = i; i < ds.n; i++) {
+		if (ds.arr[i] % 2 == 0) {
+			tong += ds.arr[i];
+		}
+	}
+	return tong;
+}
+
+// Tìm số các số dương trong dãy số
+int demSoDuong(DaySo ds) {
+	int dem = 0;
+	for (int i = i; i < ds.n; i++) {
+		if (ds.arr[i] > 0) {
+			dem++;
+		}
+	}
+	return dem;
+}
+
+// Tìm vị trí đầu tiên của phần tử nhỏ nhất trong dãy số
+int timViTriMinDauTien(DaySo ds) {
+	int vtMin = 0;
+	for (int i = 1; i < ds.n; i++) {
+		if (ds.arr[i] < ds.arr[vtMin]) {
+			vtMin = i;
+		}
+	}
+	return vtMin;
+}
+
+// Tìm vị trí đầu tiên (nếu có) của phần tử là số hoàn thiện lớn nhất trong dãy số
+bool kiemTraSht(int n) {
+	int tong = 0;
+	for (int i = 1; i < n; i++) {
+		if (n % i == 0) {
+			tong += i;
+		}
+	}
+	return tong == n;
+}
+int timViTriShtMaxDauTien(DaySo ds) {
+	int vtMax;
+	bool flag = false;
+	for (int i = 0; i < ds.n; i++) {
+		if (kiemTraSht(ds.arr[i]) == true) {
+			if (flag == false) {
+				vtMax = i;
+				flag = true;
+			}
+			else if (ds.arr[i] > ds.arr[vtMax]) {
+				vtMax = i;
+			}
+		}
+	}
+	if (flag == true) {
+		return vtMax;
+	}
+	else {
+		return -1;
+	}
+}
+
+void main() {
+	system("pause");
+}
+```
+
+```cpp
+// Bài 5.4
+#include <iostream>
+using namespace std;
+#define KTM 50
+
+// Cho một dãy số thực
+struct DaySo {
+	float arr[KTM];
+	int n;
+};
+
+// Tính tổng các số âm trong dãy số
+float tinhTongSoAm(DaySo ds) {
+	float tong = 0.0f;
+	for (int i = 0; i < ds.n; i++) {
+		if (ds.arr[i] < 0) {
+			tong += ds.arr[i];
+		}
+	}
+	return tong;
+}
+
+// Tìm số các số dương có trong dãy số.
+int demSoDuong(DaySo ds) {
+	int dem = 0;
+	for (int i = i; i < ds.n; i++) {
+		if (ds.arr[i] > 0) {
+			dem++;
+		}
+	}
+	return dem;
+}
+
+// Tìm giá trị dương lớn nhất trong dãy số
+bool timMaxDuong(DaySo ds, float& max) {
+	bool flag = false;
+	for (int i = 0; i < ds.n; i++) {
+		if (ds.arr[i] > 0) {
+			if (flag == false) {
+				max = ds.arr[i];
+				flag = true;
+			}
+			else if (ds.arr[i] > max) {
+				max = ds.arr[i];
+			}
+		}
+	}
+	return flag;
+}
+
+// Tìm vị trí đầu tiên phần tử dương lớn nhất trong dãy số
+int timViTriMaxDuongDauTien(DaySo ds) {
+	bool flag;
+	int vtMax;
+	for (int i = 0; i < ds.n; i++) {
+		if (ds.arr[i] > 0) {
+			if (flag == false) {
+				vtMax = i;
+				flag = true;
+			}
+			else if (ds.arr[i] > ds.arr[vtMax]) {
+				vtMax = i;
+			}
+		}
+	}
+	if (flag == true) {
+		return vtMax;
+	}
+	else {
+		return -1;
+	}
+}
+
+void main() {
+	system("pause");
+}
+```
