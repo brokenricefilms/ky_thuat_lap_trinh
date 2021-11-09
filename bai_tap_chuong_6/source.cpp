@@ -191,3 +191,16 @@ bool kiemTraMaTranDoiXung(MaTran m) {
   }
   return true;
 }
+
+void xuatCapNguyenDuongThoaPhuongTrinh(int a, int b, int c) {
+  // 5) Tìm tất cả các cặp số nguyên dương (x , y) thỏa mãn: a*x + b*y = c; với
+  // a, b, c là những số nguyên dương cho trước.
+
+  for (int x = 0; x < a + b + c; x++) {
+    for (int y = 0; y < a + b + c; y++) {
+      if (a * x + b * y == c) {
+        cout << "(" << x << ", " << y << ")\n";
+      }
+    }
+  }
+}

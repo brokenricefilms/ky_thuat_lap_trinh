@@ -16,8 +16,8 @@ using namespace std;
 // 4) Kiểm tra một ma trận vuông có phải là ma trận đối xứng qua đường chéo
 // chính hay không.
 //
-// 5) Tìm tất cả các cặp số nguyên dương (x , y) thỏa mãn: a*x
-// + b*y = c; với a, b, c là những số nguyên dương cho trước.
+// 5) Tìm tất cả các cặp số nguyên dương (x , y) thỏa mãn: a*x + b*y = c; với a,
+// b, c là những số nguyên dương cho trước.
 //
 // 6) Kiểm tra dãy số
 // có tồn tại phần tử cực tiểu hay không? Phần tử cực tiểu là phần tử nhỏ hơn
@@ -52,3 +52,4 @@ bool kiemTraSoNguyenTo(int number);
 bool kiemTraMaTranCoPhanTuSoNguyenTo(MaTran m);
 bool kiemTranMaTranDonVi(MaTran a);
 bool kiemTraMaTranDoiXung(MaTran a);
+void xuatCapNguyenDuongThoaPhuongTrinh(int a, int b, int c);
