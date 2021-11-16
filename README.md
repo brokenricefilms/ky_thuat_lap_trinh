@@ -4,8 +4,7 @@
 
 ### Bài 1
 
-Viết chương trình cho phép nhập vào điểm hai môn toán, văn. Tính điểm trung bình hai môn theo tiêu chí: đtb=(toán*2 + văn)/3. Cho biết kết quả là đậu hay rớt, biết rằng nếu đtb >=5 là đậu, nếu đtb<5 là rớt.
-
+Viết chương trình cho phép nhập vào điểm hai môn toán, văn. Tính điểm trung bình hai môn theo tiêu chí: đtb=(toán\*2 + văn)/3. Cho biết kết quả là đậu hay rớt, biết rằng nếu đtb >=5 là đậu, nếu đtb<5 là rớt.
 
 ```cpp
 #include <iostream>
@@ -85,6 +84,7 @@ void main(){
 
 Viết chương trình cho phép nhập vào điểm số 3 môn học: toán, văn, ngoại ngữ. Tính điểm trung bình theo tiêu chí: **dtb=(toán *3 + văn*2 + ngoại ngữ)/6**
 Hãy cho biết kết quả xếp loại biết rằng:
+
 - Nếu đtb>=8 và không có môn nào dưới 6.5, xếp loại giỏi.
 - Nếu 7=<đtb<8 và không có môn nào dưới 5, xếp loại khá.
 - Nếu 5=<đtb<7 và không có môn nào dưới 3.5, xếp loại trung bình.
@@ -134,7 +134,6 @@ void main(){
 Viết chương trình cho phép nhập vào một số nguyên dương n (n>1). Tính giá trị của biểu thức sau:
 1/2+1/3+…+1/𝑛
 
-
 ```cpp
 #include <iostream>
 using namespace std;
@@ -153,7 +152,6 @@ void main(){
   cout << "s = " << s;
 }
 ```
-
 
 ## Chương 2
 
@@ -859,4 +857,48 @@ int timViTriMaxDuongDauTien(DaySo ds) {
 void main() {
 	system("pause");
 }
+```
+
+## chương 6
+
+```cpp
+#include <iostream>
+using namespace std;
+#define KTM 50
+struct MTVuong {
+	int list[KTM][KTM];
+	int n;
+};
+
+// 4. Kiểm tra một ma trận vuông có phải là ma trận đối xứng qua đường chéo chính hay không
+bool kiemTraMaTranDoiXungQuaDuongCheoChinh(MTVuong mt) {
+	for (int i = 1; i < mt.n; i++) {
+		for (int j = 0; j < i; j++) {
+			if (mt.list[i][j] != mt.list[j][i]) {
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
+// 5. Tìm tất cả các cặp số nguyên dương (x , y) thỏa mãn: a*x + b*y = c; với a, b, c là những số nguyên dương cho trước
+void timTatCaCacCapSoThoaPhuongTrinh(int a, int b, int c) {
+	unsigned int x, y;
+	unsigned int maxX = c / a;
+	unsigned int maxY = c / b;
+	for (x = 1; x <= maxX; x++) {
+		for (y = 1; y <= maxY; y++) {
+			if ((a * x + b * y) == c) {
+				cout << "(" << x << ", " << y << ")\n";
+			}
+		}
+	}
+}
+```
+
+## chương 7
+
+```cpp
+
 ```
