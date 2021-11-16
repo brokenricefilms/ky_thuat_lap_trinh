@@ -1,6 +1,22 @@
 # Kỹ thuật lập trình
 
-## Chương 1
+**↓↓Table of Contents↓↓**
+
+- [Kỹ thuật lập trình](#kỹ-thuật-lập-trình)
+  _ [Bài 1](#bài-1)
+  _ [Bài 2](#bài-2)
+  _ [Bài 3](#bài-3)
+  _ [Bài 5](#bài-5)
+  - [Chương 2](#chương-2)
+    - [Bài 1](#bài-1-1)
+    - [Bài 3](#bài-3-1)
+  - [Con trỏ](#con-trỏ)
+  - [Chương 4](#chương-4)
+    - [bài 1](#bài-1-2)
+    - [bài 2](#bài-2-1)
+  - [Chương 5](#chương-5)
+  - [chương 6](#chương-6)
+  - [chương 7](#chương-7)
 
 ### Bài 1
 
@@ -900,5 +916,97 @@ void timTatCaCacCapSoThoaPhuongTrinh(int a, int b, int c) {
 ## chương 7
 
 ```cpp
+#include <iostream>
+using namespace std;
+#define KTM 50
+struct DaySo {
+	int list[KTM];
+	int n;
+};
 
+// 3. Trộn hai dãy số a và b đã được sắp xếp theo thứ tự tăng dần thành dãy số x cũng được sắp xếp theo thứ tự tăng dần
+DaySo tronHaiDaySo(DaySo a, DaySo b) {
+	DaySo x;
+	x.n = 0;
+	if (a.n + b.n > KTM) {
+		return x;
+	}
+	int i = 0, j = 0;
+	while (i < a.n && j < b.n) {
+		if (a.list[i] < b.list[j]) {
+			x.list[x.n++] = a.list[i++];
+		}
+		else {
+			x.list[x.n++] = b.list[j++];
+		}
+	}
+	while (i < a.n) {
+		x.list[x.n++] = a.list[i++];
+	}
+	while (j < b.n) {
+		x.list[x.n++] = b.list[j++];
+	}
+}
+
+// 4. Tách dãy số x thành hai dãy số a và b. Dãy số a chứa các số chẵn và dãy số b chứa các số lẻ
+void tachDaySoChanLe(DaySo x, DaySo& a, DaySo& b) {
+	a.n = 0;
+	b.n = 0;
+	for (int i = 0; i < x.n; i++) {
+		if (x.list[i] % 2 == 0) {
+			a.list[a.n++] = x.list[i];
+		}
+		else {
+			b.list[b.n++] = x.list[i];
+		}
+	}
+}
+```
+
+```cpp
+#include <iostream>
+using namespace std;
+#define KTM 50
+struct DaySo {
+	int list[KTM];
+	int n;
+};
+
+// 3. Trộn hai dãy số a và b đã được sắp xếp theo thứ tự tăng dần thành dãy số x cũng được sắp xếp theo thứ tự tăng dần
+DaySo tronHaiDaySo(DaySo a, DaySo b) {
+	DaySo x;
+	x.n = 0;
+	if (a.n + b.n > KTM) {
+		return x;
+	}
+	int i = 0, j = 0;
+	while (i < a.n && j < b.n) {
+		if (a.list[i] < b.list[j]) {
+			x.list[x.n++] = a.list[i++];
+		}
+		else {
+			x.list[x.n++] = b.list[j++];
+		}
+	}
+	while (i < a.n) {
+		x.list[x.n++] = a.list[i++];
+	}
+	while (j < b.n) {
+		x.list[x.n++] = b.list[j++];
+	}
+}
+
+// 4. Tách dãy số x thành hai dãy số a và b. Dãy số a chứa các số chẵn và dãy số b chứa các số lẻ
+void tachDaySoChanLe(DaySo x, DaySo& a, DaySo& b) {
+	a.n = 0;
+	b.n = 0;
+	for (int i = 0; i < x.n; i++) {
+		if (x.list[i] % 2 == 0) {
+			a.list[a.n++] = x.list[i];
+		}
+		else {
+			b.list[b.n++] = x.list[i];
+		}
+	}
+}
 ```
