@@ -25,10 +25,11 @@ void xuatDaySo(DaySo a) {
 }
 
 int tinhTongPhanTu(DaySo &a) {
-  if (a.n < 0) {
+  if (a.nBackup < 0) {
+    a.nBackup = a.n;
     return a.sum;
   }
-  a.sum += a.list[a.n];
-  a.n = a.n - 1;
+  a.sum += a.list[a.nBackup];
+  a.nBackup = a.nBackup - 1;
   return tinhTongPhanTu(a);
 }
