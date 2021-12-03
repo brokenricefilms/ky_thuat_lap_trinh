@@ -2,6 +2,9 @@
 
 **↓↓Table of Contents↓↓**
 
+<details>
+<summary>Click here to show.</summary>
+
 - [Kỹ thuật lập trình](#kỹ-thuật-lập-trình)
   _ [Bài 1](#bài-1)
   _ [Bài 2](#bài-2)
@@ -17,6 +20,10 @@
   - [Chương 5](#chương-5)
   - [chương 6](#chương-6)
   - [chương 7](#chương-7)
+
+---
+
+</details>
 
 ### Bài 1
 
