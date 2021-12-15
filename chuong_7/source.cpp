@@ -58,10 +58,8 @@ int xuatPhanTuLonNhatTamGiaTrenTrai(MaTranVuong a) {
 void xuatPhanTuDuongTamGiacDuoiPhai(MaTranVuong a) {
   for (int i = 0; i < a.n; i++) {
     for (int j = 0; j < a.n; j++) {
-      if (i + j > a.n - 2) {
-        if (a.list[i][j] > 0) {
-          cout << a.list[i][j] << " ";
-        }
+      if (i + j > a.n - 2 && a.list[i][j] > 0) {
+        cout << a.list[i][j] << " ";
       }
     }
   }
